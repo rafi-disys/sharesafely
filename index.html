@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Link to the CSS file -->
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <!-- Your HTML content here -->
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+
+<div class="file-upload">
+  <div class="file-select">
+    <div class="file-select-button" id="fileName">Choose File</div>
+    <div class="file-select-name" id="noFile">No file chosen...</div> 
+
+    <input type="file" name="chooseFile" id="chooseFile">
+  </div>
+</div>
+
+    <!-- Include the JavaScript file -->
+    <script type="text/javascript" src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#uploadButton').on('click', function() {
+                var fileInput = $('#chooseFile')[0];
+        
+                if (fileInput.files.length > 0) {
+                    var file = fileInput.files[0];
+                    var formData = new FormData();
+                    formData.append('file', file);
+        
+                    $.ajax({
+                        url: '/upload', // Backend endpoint
+                        type: 'POST',
+                        data: formData,
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        success: function(response) {
+                            console.log(response); // Handle success response
+                        },
+                        error: function(error) {
+                            console.error(error); // Handle error response
+                        }
+                    });
+                } else {
+                    alert('Please select a file.');
+                }
+            });
+        });
+        </script>
+</body>
+</html>
