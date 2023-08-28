@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require('express'); // for 
 const multer = require('multer'); //middleware package that handles file uploads
 const sql = require('mssql');
 
@@ -25,7 +25,17 @@ app.post('/upload', upload.single('file'), async (req, res) => {
     try {
         // Access the uploaded file using req.file
         const uploadedFile = req.file;
+        
+        if (uploadedFile) {
+            // Log the buffer content to the console
+            console.log(uploadedFile.buffer.toString('utf-8'));
 
+            // Your other processing logic here...
+
+            res.status(200).send('File uploaded and data saved.');
+        } else {
+            res.status(400).send('No file uploaded.');
+        }
         // Connect to the database
         const pool = await sql.connect(dbConfig);
 
