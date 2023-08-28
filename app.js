@@ -1,9 +1,13 @@
 const express = require('express'); // for 
+const path = require('path');
 const multer = require('multer'); //middleware package that handles file uploads
 const sql = require('mssql');
 
 const app = express();
 const port = process.env.PORT || 3000;
+
+// Serve static assets from the "public" directory
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Set up database configuration
 const dbConfig = {
