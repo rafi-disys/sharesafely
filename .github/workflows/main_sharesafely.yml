@@ -20,7 +20,10 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '18.x'
-          
+        
+      - name: authenticating to npm registry
+        run: npm config set //npm.pkg.github.com/:_authToken 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    
+
       - name: npm install, build, and test
         run: |
           npm install --force
