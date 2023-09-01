@@ -4,7 +4,8 @@
   "description": "Website to send file to azure database using backend logic",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npm run build --if-present", 
+    "test": "npm run test --if-present"    
   },
   "author": "",
   "license": "ISC",
