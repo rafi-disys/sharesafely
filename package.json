@@ -4,8 +4,8 @@
   "description": "Website to send file to azure database using backend logic",
   "main": "app.js",
   "scripts": {
-    "build": "npm run build --if-present", 
-    "test": "npm run test --if-present"    
+    "build": "npm run build", 
+    "test": "npm run test"    
   },
   "author": "",
   "license": "ISC",
